@@ -58,7 +58,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: Onbord_screen(),
+      home: Splash_screen(),
     ),
     designSize: const Size(375, 812),) ;
   }
