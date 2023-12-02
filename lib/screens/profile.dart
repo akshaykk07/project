@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:project/screens/searchlanguage.dart';
+import 'package:project/screens/settings.dart';
 import '../constants/colors.dart';
 import '../widgets/text.dart';
 import 'aboutme.dart';
@@ -10,6 +11,7 @@ import 'addeduction.dart';
 import 'addlanguage.dart';
 import 'addskil.dart';
 import 'editprofile.dart';
+import 'myprofile.dart';
 
 class Profile_screen extends StatelessWidget {
   const Profile_screen({super.key});
@@ -17,10 +19,32 @@ class Profile_screen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: maincolor,
+        iconTheme: IconThemeData(color: white),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 15).r,
+            child: InkWell(
+              onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context) => Settings_screen(),));
+              },
+              child: Icon(
+                Icons.settings,
+                color: white,
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(right: 15).r,
+            child: Image.asset("assets/kk (2).png"),
+          ),
+        ],
+      ),
       backgroundColor: backcolor,
       body: Column(children: [
         Container(
-          height: 230.h,
+          height: 170.h,
           width: double.infinity,
           decoration: BoxDecoration(
             boxShadow: [
@@ -35,27 +59,23 @@ class Profile_screen extends StatelessWidget {
             color: maincolor,
           ),
           child: Padding(
-            padding:
-                const EdgeInsets.only(left: 20, bottom: 20, right: 20, top: 30)
-                    .r,
+            padding: const EdgeInsets.only(left: 20, bottom: 20, right: 20).r,
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(right: 10).r,
-                        child: const Icon(
-                          Icons.settings,
-                          color: white,
-                        ),
-                      ),
-                      Image.asset("assets/kk (2).png"),
-                    ],
+                  InkWell(
+                    onTap: (){
+
+
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => Myprofile_screen(),));
+                    },
+                    child: CircleAvatar(
+                      radius: 25.r,
+                      backgroundColor: white,
+                      child: Image.asset("assets/men.png"),
+                    ),
                   ),
-                  CircleAvatar(radius: 25.r,backgroundColor: white,child: Image.asset("assets/men.png"),),
                   Padding(
                     padding: const EdgeInsets.only(top: 10).r,
                     child: Apptext(
@@ -101,8 +121,12 @@ class Profile_screen extends StatelessWidget {
                         ],
                       ),
                       InkWell(
-                        onTap: (){
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => Editprofile_Screen(),));
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => Editprofile_Screen(),
+                              ));
                         },
                         child: Container(
                           height: 40.h,

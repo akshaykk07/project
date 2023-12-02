@@ -5,6 +5,9 @@ import '../constants/colors.dart';
 import '../widgets/buttons.dart';
 import '../widgets/text.dart';
 import 'editprofile.dart';
+import 'fieldofstudy.dart';
+import 'institutename.dart';
+import 'levelofeducation.dart';
 
 class Changeeducation_screen extends StatelessWidget {
   const Changeeducation_screen({super.key});
@@ -43,6 +46,7 @@ class Changeeducation_screen extends StatelessWidget {
               child: SizedBox(
                 height: 40.h,
                 child: TextFormField(
+                  readOnly: true,
                   decoration: InputDecoration(
                       hintText: "Bachelor of Information Technology",
                       hintStyle: TextStyle(color: Colors.grey, fontSize: 12),
@@ -54,6 +58,19 @@ class Changeeducation_screen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10).r),
                       contentPadding: EdgeInsets.symmetric(
                           horizontal: 15.w, vertical: 10.h),
+                      suffixIcon: InkWell(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      Levelofeducation_Screen(),
+                                ));
+                          },
+                          child: Icon(
+                            Icons.search,
+                            color: Colors.grey,
+                          )),
                       fillColor: white,
                       filled: true,
                       border: OutlineInputBorder(
@@ -86,6 +103,18 @@ class Changeeducation_screen extends StatelessWidget {
                       contentPadding: EdgeInsets.symmetric(
                           horizontal: 15.w, vertical: 10.h),
                       fillColor: white,
+                      suffixIcon: InkWell(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Institute_screen(),
+                                ));
+                          },
+                          child: Icon(
+                            Icons.search,
+                            color: Colors.grey,
+                          )),
                       filled: true,
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(15).r)),
@@ -105,9 +134,22 @@ class Changeeducation_screen extends StatelessWidget {
               child: SizedBox(
                 height: 40.h,
                 child: TextFormField(
+                  readOnly: true,
                   decoration: InputDecoration(
+                      suffixIcon: InkWell(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Fieldofstudy_screen(),
+                                ));
+                          },
+                          child: Icon(
+                            Icons.search,
+                            color: Colors.grey,
+                          )),
                       hintText: "Information Technology",
-                      hintStyle: TextStyle(color: Colors.grey, fontSize: 12),
+                      hintStyle: TextStyle(color: Colors.grey, fontSize: 12.sp),
                       enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: white),
                           borderRadius: BorderRadius.circular(10).r),
@@ -139,38 +181,14 @@ class Changeeducation_screen extends StatelessWidget {
                     ),
                     Padding(
                       padding: const EdgeInsets.only(bottom: 10).r,
-                      child: Container(
-                        height: 40.h,
-                        width: 100.w,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10).r,
-                          color: white,
-                        ),
-                        child: Center(
-                            child: Apptext(
-                                textcolor: Colors.grey,
-                                weight: FontWeight.w400,
-                                size: 12.sp,
-                                text: "Sep 2010")),
-                      ),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(right: 80).r,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 10),
-                        child: Apptext(
-                            text: "End date",
-                            size: 12.sp,
-                            weight: FontWeight.w700,
-                            textcolor: maincolor),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 10).r,
+                      child: InkWell(
+                        onTap: () async {
+                          var d = await showDatePicker(
+                              context: context,
+                              initialDate: DateTime.now(),
+                              firstDate: DateTime(1999),
+                              lastDate: DateTime(2024));
+                        },
                         child: Container(
                           height: 40.h,
                           width: 100.w,
@@ -183,7 +201,49 @@ class Changeeducation_screen extends StatelessWidget {
                                   textcolor: Colors.grey,
                                   weight: FontWeight.w400,
                                   size: 12.sp,
-                                  text: "Aug 2013")),
+                                  text: "Sep 2010")),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 80).r,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 10).r,
+                        child: Apptext(
+                            text: "End date",
+                            size: 12.sp,
+                            weight: FontWeight.w700,
+                            textcolor: maincolor),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 10).r,
+                        child: InkWell(
+                          onTap: () async {
+                            var d = await showDatePicker(
+                                context: context,
+                                initialDate: DateTime.now(),
+                                firstDate: DateTime(1999),
+                                lastDate: DateTime(2024));
+                          },
+                          child: Container(
+                            height: 40.h,
+                            width: 100.w,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10).r,
+                              color: white,
+                            ),
+                            child: Center(
+                                child: Apptext(
+                                    textcolor: Colors.grey,
+                                    weight: FontWeight.w400,
+                                    size: 12.sp,
+                                    text: "Aug 2013")),
+                          ),
                         ),
                       ),
                     ],
@@ -255,7 +315,7 @@ class Changeeducation_screen extends StatelessWidget {
                       padding: const EdgeInsets.only(right: 10).r,
                       child: InkWell(
                         onTap: () {
-                          remov(context);
+                          remov(context, "Remove Education");
                         },
                         child: Button(
                             name: "REMOVE",
@@ -271,7 +331,7 @@ class Changeeducation_screen extends StatelessWidget {
                       padding: EdgeInsets.only(left: 10).r,
                       child: InkWell(
                         onTap: () {
-                          save(context);
+                          remov(context, "Undo Changes");
                         },
                         child: Button(
                             name: "SAVE",
@@ -291,79 +351,7 @@ class Changeeducation_screen extends StatelessWidget {
     );
   }
 
-  void save(BuildContext context) {
-    showModalBottomSheet(
-        shape: OutlineInputBorder(borderRadius: BorderRadius.only(topRight: Radius.circular(20),topLeft: Radius.circular(20),),borderSide: BorderSide(color: white)),
-        context: context,
-        builder: (builder) {
-          return Container(
-            height: 300.0.h,
-            color: Colors.transparent,
-            child: Container(
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(20.0).r,
-                        topRight: Radius.circular(20.0).r)),
-                child: Center(
-                  child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Container(
-                          height: 5.h,
-                          width: 30.w,
-                          color: maincolor,
-                        ),
-                        Column(
-                          children: [
-                            Apptext(
-                                text: "Undo Changes ?",
-                                size: 16.sp,
-                                weight: FontWeight.w700,
-                                textcolor: maincolor),
-                            Apptext(
-                                text:
-                                    "Are you sure you want to change what you entered?",
-                                size: 12.sp,
-                                weight: FontWeight.w400,
-                                textcolor: maincolor),
-                          ],
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(left: 20, right: 20).r,
-                          child: Column(
-                            children: [
-                              Padding(
-                                padding: EdgeInsets.only(bottom: 10).r,
-                                child: InkWell(
-                                  onTap: (){Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Editprofile_Screen()));},
-                                  child: Button(
-                                      name: "CONTINUE FILLING",
-                                      btncolor: maincolor,
-                                      textcolor: white,
-                                      width: double.infinity.w,
-                                      height: 50.h),
-                                ),
-                              ),
-                              InkWell(
-                                onTap: (){Navigator.pop(context);},
-                                child: Button(
-                                    name: "UNDO CHANGES",
-                                    btncolor: btncolor,
-                                    textcolor: maincolor,
-                                    width: double.infinity.w,
-                                    height: 50.h),
-                              )
-                            ],
-                          ),
-                        )
-                      ]),
-                )),
-          );
-        });
-  }
-
-  void remov(BuildContext context) {
+  void remov(BuildContext context, String title) {
     showModalBottomSheet(
         shape: OutlineInputBorder(
             borderRadius: BorderRadius.only(
@@ -394,7 +382,7 @@ class Changeeducation_screen extends StatelessWidget {
                         Column(
                           children: [
                             Apptext(
-                                text: "Remove Education ?",
+                                text: "${title} ?",
                                 size: 16.sp,
                                 weight: FontWeight.w700,
                                 textcolor: maincolor),
@@ -413,7 +401,13 @@ class Changeeducation_screen extends StatelessWidget {
                               Padding(
                                 padding: EdgeInsets.only(bottom: 10).r,
                                 child: InkWell(
-                                  onTap: (){Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Editprofile_Screen()));},
+                                  onTap: () {
+                                    Navigator.pushReplacement(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                Editprofile_Screen()));
+                                  },
                                   child: Button(
                                       name: "CONTINUE FILLING",
                                       btncolor: maincolor,
@@ -423,7 +417,9 @@ class Changeeducation_screen extends StatelessWidget {
                                 ),
                               ),
                               InkWell(
-                                  onTap: (){Navigator.pop(context);},
+                                onTap: () {
+                                  Navigator.pop(context);
+                                },
                                 child: Button(
                                     name: "UNDO CHANGES",
                                     btncolor: btncolor,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:project/screens/searchlanguage.dart';
+import 'package:project/screens/settings.dart';
 import 'package:project/screens/uploadresume.dart';
 import '../constants/colors.dart';
 import '../widgets/text.dart';
@@ -14,6 +15,7 @@ import 'changeeducation.dart';
 import 'changeskill.dart';
 import 'editappreciation.dart';
 import 'language.dart';
+import 'myprofile.dart';
 
 class Editprofile_Screen extends StatelessWidget {
   const Editprofile_Screen({super.key});
@@ -25,9 +27,18 @@ class Editprofile_Screen extends StatelessWidget {
       actions: [
         Padding(
           padding: const EdgeInsets.only(right: 15).r,
-          child: Icon(
-            Icons.settings,
-            color: white,
+          child: InkWell(
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Settings_screen(),
+                  ));
+            },
+            child: Icon(
+              Icons.settings,
+              color: white,
+            ),
           ),
         ),
         Padding(
@@ -60,7 +71,12 @@ class Editprofile_Screen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  CircleAvatar(radius: 25.r,backgroundColor: white,child: Image.asset("assets/men.png"),),
+                  InkWell(
+                      onTap: (){
+
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => Myprofile_screen(),));
+                      },
+                      child: CircleAvatar(radius: 25.r,backgroundColor: white,child: Image.asset("assets/men.png"),)),
                   Padding(
                     padding: const EdgeInsets.only(top: 10).r,
                     child: Apptext(

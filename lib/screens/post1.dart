@@ -15,7 +15,7 @@ class Post1_screen extends StatelessWidget {
         padding: const EdgeInsets.all(10).r,
         child: ListView(children: [
           Container(
-            height: 490.h,
+            height: 490,
             width: double.infinity,
             decoration: BoxDecoration(
               boxShadow: [
@@ -51,7 +51,7 @@ class Post1_screen extends StatelessWidget {
                               textcolor: maincolor),
                           subtitle: Row(
                             children: [
-                              Icon(
+                              const Icon(
                                 Icons.access_time_rounded,
                                 size: 15,
                                 color: Colors.grey,
@@ -87,11 +87,9 @@ class Post1_screen extends StatelessWidget {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(top: 20,left: 30).r,
+                        padding: const EdgeInsets.only(top: 20,left: 30,right: 30).r,
                         child: Stack(children: [
-                          SizedBox(
-                            height:166,width: 314,
-                              child: Image.asset("assets/di.png")),
+                          Image.asset("assets/di.png"),
                           Positioned(
                               top: 60.r,
                               left: 60.r,

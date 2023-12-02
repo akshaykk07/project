@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:project/screens/jobdescrip.dart';
+import 'package:project/screens/profile.dart';
 import 'package:project/screens/search.dart';
 import 'package:project/widgets/bottomnav.dart';
 import 'package:project/widgets/jobtile.dart';
@@ -209,6 +210,14 @@ class home extends StatelessWidget {
               width: 216.w,
               child: Image.asset("assets/girl.png"),
             )),
+        Positioned(
+            top: 60.r,right: 40.r,
+            child: InkWell(
+                onTap: (){
+
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => Profile_screen(),));
+                },
+                child: CircleAvatar(radius: 20.r,backgroundColor: white,child: Image.asset("assets/men.png"),))),
 
       ]),
 
