@@ -86,12 +86,11 @@ class _homeState extends State<home> {
                     )),
               ],
             ),
-
+            SizedBox(
+              height: 20.h,
+            ),
             Expanded(
               child: ListView(children:  [
-                SizedBox(
-                  height: 20.h,
-                ),
                 Apptext(
                     text: "Find Your Job",
                     size: 16.sp,
