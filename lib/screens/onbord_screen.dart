@@ -97,7 +97,7 @@ class Onbord_screen extends StatelessWidget {
               height: 60,
               width: 60,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(30).w,
+                borderRadius: BorderRadius.circular(30),
                 color: maincolor,
               ),
               child: const Icon(

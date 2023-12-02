@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:project/screens/register_screen.dart';
 
 import '../constants/colors.dart';
+import '../homescreen.dart';
 import '../widgets/button2.dart';
 import '../widgets/buttons.dart';
 import '../widgets/text.dart';
@@ -12,8 +13,9 @@ import 'forgotpass_screen.dart';
 
 class Login_screen extends StatelessWidget {
    Login_screen({super.key});
- var email=TextEditingController();
- var passwor=TextEditingController();
+   final formkey=GlobalKey<FormState>();
+   final email=TextEditingController();
+   final password=TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +23,6 @@ class Login_screen extends StatelessWidget {
         padding: const EdgeInsets.only(left: 29, right: 29).r,
         child: SingleChildScrollView(
           child: Column(
-              // mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Padding(
@@ -62,7 +63,10 @@ class Login_screen extends StatelessWidget {
                 SizedBox(
                   height: 50.h,
                   child: TextFormField(
-                    decoration: const InputDecoration(
+                   keyboardType: TextInputType.emailAddress,
+                    controller: email,
+                    decoration:  InputDecoration(
+                        contentPadding: EdgeInsets.symmetric(vertical: 10.h,horizontal:15.w ),
                       hintText: "Email",
                         hintStyle: TextStyle(color: Colors.grey,fontSize: 12),
                         fillColor: Colors.white,
@@ -92,21 +96,23 @@ class Login_screen extends StatelessWidget {
                 SizedBox(
                   height: 50.h,
                   child: TextFormField(
+                    controller: password,
                     obscureText: true,
-                    decoration: const InputDecoration(
+                    decoration:  InputDecoration(
+                      contentPadding: EdgeInsets.symmetric(vertical: 10.h,horizontal:15.w ),
                         hintText: "Password",
-                        hintStyle: TextStyle(color: Colors.grey,fontSize: 12),
+                        hintStyle: const TextStyle(color: Colors.grey,fontSize: 12),
                         suffixIcon: Icon(
                           Icons.remove_red_eye_outlined,
                           color: Colors.grey,
                         ),
                         fillColor: Colors.white,
                         filled: true,
-                        border: OutlineInputBorder(),
+                        border: const OutlineInputBorder(),
                         enabledBorder: OutlineInputBorder(
                             borderSide:
                                 BorderSide(color: Colors.white)),
-                        focusedBorder: OutlineInputBorder(
+                        focusedBorder: const OutlineInputBorder(
                             borderSide:
                                 BorderSide(color: Colors.white)
                         )),
@@ -166,11 +172,17 @@ class Login_screen extends StatelessWidget {
                 ),
                Padding(
                   padding: EdgeInsets.only(left: 40, right: 40).r,
-                  child: InkWell(onTap: (){
-
-
-
-                  },
+                  child: InkWell(
+                    onTap: (){
+                       if(email.text.isNotEmpty||password.text.isNotEmpty)
+                         {
+                           Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomeScreen(),));
+                         }
+                       else
+                         {
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Enter email and password")));
+                         }
+                    },
                     child: Button(
                         name: "LOGIN", btncolor: maincolor, textcolor: white,height: 50.h,width: 500.w,),
                   ),

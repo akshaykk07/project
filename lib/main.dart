@@ -58,7 +58,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: Login_screen(),
+      home: Onbord_screen(),
     ),
     designSize: const Size(375, 812),) ;
   }
