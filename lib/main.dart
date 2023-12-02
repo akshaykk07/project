@@ -39,6 +39,7 @@ import 'package:project/screens/splash_screen.dart';
 import 'package:project/screens/uplodcv.dart';
 
 import 'home.dart';
+import 'homescreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -57,7 +58,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: Postjob_screen(),
+      home: Login_screen(),
     ),
     designSize: const Size(375, 812),) ;
   }

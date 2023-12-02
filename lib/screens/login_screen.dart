@@ -11,8 +11,9 @@ import 'forgotpass_screen.dart';
 
 
 class Login_screen extends StatelessWidget {
-  const Login_screen({super.key});
-
+   Login_screen({super.key});
+ var email=TextEditingController();
+ var passwor=TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(

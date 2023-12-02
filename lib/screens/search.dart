@@ -119,7 +119,7 @@ class Search_screen extends StatelessWidget {
               ))
         ],
       ),
-      bottomNavigationBar:Bottomnav(currentindex: 0),
+
     );
   }
 }

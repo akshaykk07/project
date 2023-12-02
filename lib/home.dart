@@ -3,21 +3,25 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:project/screens/jobdescrip.dart';
 import 'package:project/screens/profile.dart';
 import 'package:project/screens/search.dart';
-import 'package:project/widgets/bottomnav.dart';
 import 'package:project/widgets/jobtile.dart';
 import 'package:project/widgets/text.dart';
 
 import 'constants/colors.dart';
 
-class home extends StatelessWidget {
+class home extends StatefulWidget {
   const home({super.key});
 
   @override
+  State<home> createState() => _homeState();
+}
+
+class _homeState extends State<home> {
   @override
+  @override
+
 
   Widget build(BuildContext context) {
 
-    int index=0;
     return Scaffold(
       body: Stack(children: [
         Padding(
@@ -222,27 +226,7 @@ class home extends StatelessWidget {
       ]),
 
 
-      bottomNavigationBar: BottomNavigationBar(
-          currentIndex:index ,
-          selectedItemColor: maincolor,
-          unselectedItemColor: Colors.grey,
-          items:  const [
-            BottomNavigationBarItem(
-                icon: ImageIcon(AssetImage("assets/Home.png")), label: ""),
-            BottomNavigationBarItem(
-                icon: ImageIcon(AssetImage("assets/Connection.png")),
-                label: ""),
-            BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.add_circle,
-                  color: maincolor,size: 35,
-                ),
-                label: ""),
-            BottomNavigationBarItem(
-                icon: ImageIcon(AssetImage("assets/Chat.png")), label: ""),
-            BottomNavigationBarItem(
-                icon: ImageIcon(AssetImage("assets/Save.png")), label: ""),
-          ]),
+
     );
   }
 }
